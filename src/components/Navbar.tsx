@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import Link from "next/link";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -31,21 +32,26 @@ export default function Navbar() {
         {scrolled && (
           <div className="absolute bottom-0 left-0 w-full h-[1px] bg-[linear-gradient(90deg,transparent_0%,rgba(232,0,13,0.4)_20%,rgba(255,255,255,0.1)_50%,rgba(232,0,13,0.4)_80%,transparent_100%)] pointer-events-none" />
         )}
-        <div className="relative group cursor-pointer hover-target inline-flex flex-col items-start pt-[6px]">
-          <a href="#" className="font-bebas text-[18px] tracking-[8px] text-white font-normal leading-none uppercase">MANIFEST</a>
+        <Link href="/" className="relative group cursor-pointer hover-target inline-flex flex-col items-start pt-[6px]">
+          <span className="font-bebas text-[18px] tracking-[8px] text-white font-normal leading-none uppercase">MANIFEST</span>
           <div className="w-full h-[1px] bg-[#E8000D] my-[2px] transform origin-left transition-transform duration-300 group-hover:scale-x-110" />
-          <div className="font-bebas text-[18px] tracking-[8px] text-[#E8000D] font-normal leading-none uppercase">DRIVES</div>
-        </div>
+          <span className="font-bebas text-[18px] tracking-[8px] text-[#E8000D] font-normal leading-none uppercase">DRIVES</span>
+        </Link>
 
-        <div className="hidden md:flex gap-8">
-          {["THE CARS", "THE PROOF", "OWN YOURS"].map((link, i) => (
-            <a
+        <div className="hidden md:flex gap-8 items-center">
+          {[
+            { label: "THE CARS", href: "/#the-cars" }, 
+            { label: "THE PROOF", href: "/#the-proof" },
+            { label: "SHOP FULL CATALOG", href: "/shop" },
+            { label: "OWN YOURS", href: "/#own-yours" }
+          ].map((item, i) => (
+            <Link
               key={i}
-              href={`#${link.toLowerCase().replace(" ", "-")}`}
-              className="font-inter font-medium text-[13px] tracking-[2px] text-[#9A9A9A] hover:text-white transition-colors duration-300 uppercase hover-target"
+              href={item.href}
+              className={`font-inter font-medium text-[13px] tracking-[2px] uppercase hover-target transition-colors duration-300 ${item.label === "SHOP FULL CATALOG" ? "text-white bg-[#E8000D] px-4 py-2 rounded shadow-[0_0_0_1px_rgba(232,0,13,0.3)] hover:bg-[#FF1A1A]" : "text-[#9A9A9A] hover:text-white"}`}
             >
-              {link}
-            </a>
+              {item.label}
+            </Link>
           ))}
         </div>
 
@@ -72,15 +78,20 @@ export default function Navbar() {
               <X className="w-8 h-8" />
             </button>
 
-            {["THE CARS", "THE PROOF", "OWN YOURS"].map((link, i) => (
-              <a
+            {[
+              { label: "THE CARS", href: "/#the-cars" }, 
+              { label: "THE PROOF", href: "/#the-proof" },
+              { label: "SHOP CATALOG", href: "/shop" },
+              { label: "OWN YOURS", href: "/#own-yours" }
+            ].map((item, i) => (
+              <Link
                 key={i}
-                href={`#${link.toLowerCase().replace(" ", "-")}`}
+                href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="font-bebas text-[40px] tracking-[4px] text-white"
+                className={`font-bebas text-[40px] tracking-[4px] ${item.label === "SHOP CATALOG" ? "text-[#E8000D]" : "text-white"}`}
               >
-                {link}
-              </a>
+                {item.label}
+              </Link>
             ))}
           </motion.div>
         )}
