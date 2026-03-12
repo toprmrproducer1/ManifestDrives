@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Bebas_Neue } from "next/font/google";
 import "./globals.css";
 import CustomCursor from "@/components/CustomCursor";
@@ -11,12 +11,15 @@ const bebas = Bebas_Neue({ subsets: ["latin"], weight: "400", variable: "--font-
 export const metadata: Metadata = {
   title: "Manifest Drives — Own It In Your Hand First",
   description: "Premium 1:32 die-cast scale models of the world's most iconic cars. BMW M4. Lamborghini Huracán STO. Porsche 911 GT3 RS. It starts on your desk. It ends in your driveway.",
-  themeColor: "#080808",
   openGraph: {
     title: "Manifest Drives",
     description: "The desk first. The driveway next.",
     type: "website"
   }
+};
+
+export const viewport: Viewport = {
+  themeColor: "#080808",
 };
 
 export default function RootLayout({
