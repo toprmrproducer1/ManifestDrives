@@ -54,7 +54,13 @@ export default function ShopPage() {
                     <shopify-money format="money_with_currency" query="product.selectedOrFirstAvailableVariant.price"></shopify-money>
                   </div>
                   
-                  <div class="mt-auto">
+                  <div class="mt-auto flex flex-col gap-3">
+                    <button
+                      onclick="document.getElementById('product-modal').showModal(); document.getElementById('product-modal-context').update(event);"
+                      class="w-full inline-block font-bebas text-[16px] tracking-[4px] px-6 py-4 uppercase border border-white/20 transition-all duration-400 hover-target text-white bg-transparent hover:bg-white/5 cursor-pointer"
+                    >
+                      VIEW DETAILS
+                    </button>
                     <button 
                       onclick="document.getElementById('cart').addLine(event).showModal();" 
                       class="w-full inline-block font-bebas text-[16px] tracking-[4px] px-6 py-4 uppercase border-none transition-all duration-400 hover-target text-white bg-[#E8000D] shadow-[0_0_0_1px_rgba(232,0,13,0.3),_0_4px_24px_rgba(232,0,13,0.4),_inset_0_1px_0_rgba(255,255,255,0.1)] hover:bg-[#FF1A1A] hover:shadow-[0_0_0_1px_rgba(232,0,13,0.5),_0_8px_40px_rgba(232,0,13,0.6),_inset_0_1px_0_rgba(255,255,255,0.15)] hover:-translate-y-[1px] cursor-pointer"
@@ -66,11 +72,108 @@ export default function ShopPage() {
 
               </div>
             ` }} />
-            {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-            <div shopify-loading-placeholder={true as any} className="col-span-full py-20 text-center font-bebas text-[24px] tracking-[4px] text-[#9A9A9A] animate-pulse">
+            <div shopify-loading-placeholder="true" className="col-span-full py-20 text-center font-bebas text-[24px] tracking-[4px] text-[#9A9A9A] animate-pulse">
               LOADING MANIFEST COLLECTION...
             </div>
           </shopify-list-context>
+
+          {/* Product Modal */}
+          <dialog id="product-modal" className="bg-transparent p-0 border-0 rounded-0 backdrop:bg-black/80 backdrop:backdrop-blur-sm m-auto w-[90vw] max-w-5xl">
+            <shopify-context id="product-modal-context" type="product" wait-for-update="true" className="block w-full bg-[#111111] border border-white/10 relative max-h-[90vh] overflow-y-auto">
+              <template dangerouslySetInnerHTML={{ __html: `
+                <button onclick="document.getElementById('product-modal').close();" class="absolute top-4 right-4 text-white/50 hover:text-white transition-colors cursor-pointer z-[60] bg-[#111111] border border-white/10 w-10 h-10 flex items-center justify-center rounded-full hover-target">&times;</button>
+                <div class="flex flex-col md:flex-row w-full min-h-[500px]">
+                  <div class="w-full md:w-1/2 bg-black flex items-center justify-center p-8 relative min-h-[300px] border-b md:border-b-0 md:border-r border-white/5">
+                    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05)_0%,transparent_70%)] pointer-events-none"></div>
+                    <shopify-media width="600" height="600" query="product.selectedOrFirstAvailableVariant.image" class="w-full object-contain relative z-10"></shopify-media>
+                  </div>
+                  <div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center bg-[#111111]">
+                    <div class="mb-6">
+                      <div class="font-inter text-[#9A9A9A] text-[12px] tracking-[2px] uppercase mb-2">
+                        <shopify-data query="product.vendor"></shopify-data>
+                      </div>
+                      <h1 class="font-bebas text-[36px] md:text-[48px] tracking-[2px] text-white leading-none uppercase mb-4">
+                        <shopify-data query="product.title"></shopify-data>
+                      </h1>
+                      <div class="font-inter text-[#C9A84C] font-medium text-[24px]">
+                        <shopify-money format="money_with_currency" query="product.selectedOrFirstAvailableVariant.price"></shopify-money>
+                      </div>
+                    </div>
+                    
+                    <div class="custom-variant-wrapper mb-8">
+                      <shopify-variant-selector></shopify-variant-selector>
+                    </div>
+                    
+                    <div class="font-inter text-[#B0B0B0] text-[15px] leading-relaxed mb-8 shopify-product-description">
+                      <shopify-data query="product.descriptionHtml"></shopify-data>
+                    </div>
+                    
+                    <div class="flex flex-col gap-4 mt-auto">
+                      <button 
+                        onclick="document.getElementById('cart').addLine(event).showModal();" 
+                        shopify-attr--disabled="!product.selectedOrFirstAvailableVariant.availableForSale"
+                        class="w-full inline-block font-bebas text-[18px] tracking-[4px] px-8 py-5 uppercase border-none transition-all duration-400 hover-target text-white bg-[#E8000D] shadow-[0_0_0_1px_rgba(232,0,13,0.3),_0_4px_24px_rgba(232,0,13,0.4),_inset_0_1px_0_rgba(255,255,255,0.1)] hover:bg-[#FF1A1A] hover:-translate-y-[1px] cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        ADD TO CART
+                      </button>
+                      <button 
+                        onclick="document.querySelector('shopify-store').buyNow(event)" 
+                        shopify-attr--disabled="!product.selectedOrFirstAvailableVariant.availableForSale"
+                        class="w-full inline-block font-bebas text-[18px] tracking-[4px] px-8 py-5 uppercase border border-white/20 transition-all duration-400 hover-target text-white bg-transparent hover:bg-white/5 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        BUY NOW
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ` }} />
+            </shopify-context>
+          </dialog>
+
+          <style dangerouslySetInnerHTML={{ __html: `
+            .custom-variant-wrapper shopify-variant-selector::part(form) {
+              display: flex;
+              flex-direction: column;
+              gap: 16px;
+            }
+            .custom-variant-wrapper shopify-variant-selector::part(label) {
+              color: #9A9A9A;
+              font-family: var(--font-inter);
+              font-size: 13px;
+              text-transform: uppercase;
+              letter-spacing: 2px;
+              margin-bottom: 8px;
+              display: block;
+            }
+            .custom-variant-wrapper shopify-variant-selector::part(select) {
+              background-color: #080808;
+              color: white;
+              border: 1px solid rgba(255,255,255,0.15);
+              padding: 12px 16px;
+              border-radius: 0;
+              font-family: var(--font-inter);
+              width: 100%;
+              outline: none;
+              font-size: 16px;
+              appearance: none;
+            }
+            .custom-variant-wrapper shopify-variant-selector::part(select):focus {
+              border-color: rgba(232,0,13,0.5);
+            }
+            .shopify-product-description p {
+              margin-bottom: 1em;
+            }
+            .shopify-product-description p:last-child {
+              margin-bottom: 0;
+            }
+            dialog#product-modal[open] {
+              display: flex;
+            }
+            dialog#product-modal::backdrop {
+              background-color: rgba(0,0,0,0.85);
+              backdrop-filter: blur(8px);
+            }
+          ` }} />
         </div>
       )}
     </main>
