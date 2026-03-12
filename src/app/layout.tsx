@@ -4,6 +4,8 @@ import "./globals.css";
 import CustomCursor from "@/components/CustomCursor";
 import ClientWrapper from "@/components/ClientWrapper";
 import ShopifyProvider from "@/components/ShopifyProvider";
+import Preloader from "@/components/Preloader";
+import ScrollProgress from "@/components/ScrollProgress";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", weight: ["400", "500", "600"] });
 const bebas = Bebas_Neue({ subsets: ["latin"], weight: "400", variable: "--font-bebas" });
@@ -35,6 +37,8 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${bebas.variable} antialiased bg-[#080808] text-white`}
       >
+        <Preloader />
+        <ScrollProgress />
         <CustomCursor />
         
         <ShopifyProvider>

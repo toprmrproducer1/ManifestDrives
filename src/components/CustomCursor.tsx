@@ -61,8 +61,8 @@ export default function CustomCursor() {
           translateY: "-50%",
         }}
         animate={{
-          width: 8,
-          height: 8,
+          width: 6,
+          height: 6,
           scale: isHoveringAction ? 0 : (isHoveringText ? 1.5 : 1),
         }}
         transition={{ type: "tween", duration: 0.15 }}
@@ -70,7 +70,7 @@ export default function CustomCursor() {
       
       {/* Trailing Ring (Lerped) */}
       <motion.div
-        className="fixed top-0 left-0 rounded-full pointer-events-none z-[9998] bg-transparent border border-[rgba(232,0,13,0.4)]"
+        className="fixed top-0 left-0 rounded-full pointer-events-none z-[9998] bg-transparent border border-[rgba(232,0,13,0.5)]"
         style={{
           x: ringX,
           y: ringY,
@@ -78,10 +78,9 @@ export default function CustomCursor() {
           translateY: "-50%",
         }}
         animate={{
-          width: 32,
-          height: 32,
-          scale: isHoveringAction ? 2.5 : 1,
-          borderColor: isHoveringAction ? "rgba(232,0,13,0.6)" : "rgba(232,0,13,0.4)"
+          width: isHoveringAction ? 52 : 28,
+          height: isHoveringAction ? 52 : 28,
+          borderColor: isHoveringAction ? "rgba(232,0,13,0.6)" : "rgba(232,0,13,0.5)"
         }}
         transition={{ type: "tween", duration: 0.2 }}
       />

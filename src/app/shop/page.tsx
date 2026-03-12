@@ -83,9 +83,35 @@ export default function ShopPage() {
               <template dangerouslySetInnerHTML={{ __html: `
                 <button onclick="document.getElementById('product-modal').close();" class="absolute top-4 right-4 text-white/50 hover:text-white transition-colors cursor-pointer z-[60] bg-[#111111] border border-white/10 w-10 h-10 flex items-center justify-center rounded-full hover-target">&times;</button>
                 <div class="flex flex-col md:flex-row w-full min-h-[500px]">
-                  <div class="w-full md:w-1/2 bg-black flex items-center justify-center p-8 relative min-h-[300px] border-b md:border-b-0 md:border-r border-white/5">
+                  <div class="w-full md:w-1/2 bg-black flex flex-col items-center justify-center p-8 relative min-h-[300px] border-b md:border-b-0 md:border-r border-white/5">
                     <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05)_0%,transparent_70%)] pointer-events-none"></div>
-                    <shopify-media width="600" height="600" query="product.selectedOrFirstAvailableVariant.image" class="w-full object-contain relative z-10"></shopify-media>
+                    <shopify-media id="modal-main-image" width="600" height="600" query="product.selectedOrFirstAvailableVariant.image" class="w-full object-contain relative z-10 flex-1"></shopify-media>
+                    
+                    <div class="w-full mt-6 z-20">
+                      <p class="font-inter text-[#9A9A9A] text-[11px] uppercase tracking-[2px] mb-3">GALLERY</p>
+                      <shopify-list-context type="image" query="product.images" first="6" class="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+                        <template dangerouslySetInnerHTML={{ __html: \`
+                          <button 
+                            type="button" 
+                            onclick="
+                              const mainImg = document.getElementById('modal-main-image');
+                              const thumbImg = this.querySelector('shopify-media');
+                              if (mainImg && thumbImg) {
+                                // Extract the underlying unpic-img or img src from the shadow DOM
+                                const thumbSrc = thumbImg.shadowRoot ? thumbImg.shadowRoot.querySelector('img').src : thumbImg.querySelector('img')?.src;
+                                if (thumbSrc && mainImg.shadowRoot) {
+                                  const mainUnpic = mainImg.shadowRoot.querySelector('unpic-img, img');
+                                  if (mainUnpic) mainUnpic.setAttribute('src', thumbSrc);
+                                }
+                              }
+                            "
+                            class="w-16 h-16 shrink-0 bg-[#080808] border border-white/10 hover:border-[#E8000D] transition-colors cursor-pointer p-1"
+                          >
+                            <shopify-media width="64" height="64" query="image" class="w-full h-full object-cover pointer-events-none"></shopify-media>
+                          </button>
+                        \` }} />
+                      </shopify-list-context>
+                    </div>
                   </div>
                   <div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center bg-[#111111]">
                     <div class="mb-6">
@@ -172,6 +198,13 @@ export default function ShopPage() {
             dialog#product-modal::backdrop {
               background-color: rgba(0,0,0,0.85);
               backdrop-filter: blur(8px);
+            }
+            .scrollbar-hide::-webkit-scrollbar {
+              display: none;
+            }
+            .scrollbar-hide {
+              -ms-overflow-style: none;
+              scrollbar-width: none;
             }
           ` }} />
         </div>

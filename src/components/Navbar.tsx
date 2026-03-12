@@ -25,7 +25,7 @@ export default function Navbar() {
         transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
         className={`fixed top-0 left-0 w-full h-[64px] z-[1000] flex items-center justify-between px-6 md:px-[4vw] transition-all duration-300 ${
           scrolled 
-            ? "bg-[#080808]/40 backdrop-blur-[40px] saturate-[180%] border-b border-white/5 shadow-[0_1px_0_rgba(255,255,255,0.04),_0_8px_32px_rgba(0,0,0,0.4)]" 
+            ? "bg-[#080808]/35 backdrop-blur-[32px] saturate-[160%] border-b border-white/5 shadow-[0_1px_0_rgba(255,255,255,0.03),_0_16px_48px_rgba(0,0,0,0.5)]" 
             : "bg-transparent border-b border-white/0"
         }`}
       >
@@ -34,7 +34,7 @@ export default function Navbar() {
         )}
         <Link href="/" className="relative group cursor-pointer hover-target inline-flex flex-col items-start pt-[6px]">
           <span className="font-bebas text-[18px] tracking-[8px] text-white font-normal leading-none uppercase">MANIFEST</span>
-          <div className="w-full h-[1px] bg-[#E8000D] my-[2px] transform origin-left transition-transform duration-300 group-hover:scale-x-110" />
+          <div className="w-full h-[1.5px] bg-[#E8000D] my-[2px] transform origin-left transition-transform duration-300 group-hover:scale-x-110" />
           <span className="font-bebas text-[18px] tracking-[8px] text-[#E8000D] font-normal leading-none uppercase">DRIVES</span>
         </Link>
 
@@ -42,17 +42,22 @@ export default function Navbar() {
           {[
             { label: "THE CARS", href: "/#the-cars" }, 
             { label: "THE PROOF", href: "/#the-proof" },
-            { label: "SHOP FULL CATALOG", href: "/shop" },
             { label: "OWN YOURS", href: "/#own-yours" }
           ].map((item, i) => (
             <Link
               key={i}
               href={item.href}
-              className={`font-inter font-medium text-[13px] tracking-[2px] uppercase hover-target transition-colors duration-300 ${item.label === "SHOP FULL CATALOG" ? "text-white bg-[#E8000D] px-4 py-2 rounded shadow-[0_0_0_1px_rgba(232,0,13,0.3)] hover:bg-[#FF1A1A]" : "text-[#9A9A9A] hover:text-white"}`}
+              className="font-inter font-medium text-[11px] tracking-[4px] uppercase text-white/40 hover:text-white transition-colors duration-300 hover-target"
             >
               {item.label}
             </Link>
           ))}
+          <Link
+            href="/shop"
+            className="font-bebas text-[12px] tracking-[3px] text-[#E8000D] uppercase border border-[#E8000D] px-[20px] py-[8px] hover:bg-[#E8000D]/[0.08] transition-colors duration-300 hover-target"
+          >
+            SHOP FULL CATALOG
+          </Link>
         </div>
 
         <button
