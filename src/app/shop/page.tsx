@@ -90,7 +90,7 @@ export default function ShopPage() {
                     <div class="w-full mt-6 z-20">
                       <p class="font-inter text-[#9A9A9A] text-[11px] uppercase tracking-[2px] mb-3">GALLERY</p>
                       <shopify-list-context type="image" query="product.images" first="6" class="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
-                        <template dangerouslySetInnerHTML={{ __html: \`
+                        <template>
                           <button 
                             type="button" 
                             onclick="
@@ -109,7 +109,7 @@ export default function ShopPage() {
                           >
                             <shopify-media width="64" height="64" query="image" class="w-full h-full object-cover pointer-events-none"></shopify-media>
                           </button>
-                        \` }} />
+                        </template>
                       </shopify-list-context>
                     </div>
                   </div>
