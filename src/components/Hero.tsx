@@ -54,9 +54,9 @@ export default function Hero() {
 
   return (
     <section className="relative h-screen w-full overflow-hidden bg-[#080808] flex flex-col justify-center">
-      {/* Background Videos with Parallax */}
+      {/* Background Videos with Parallax — client-only to avoid crossOrigin SSR mismatch */}
       <motion.div style={{ y: backgroundY }} className="absolute inset-0 w-full h-[120%] -top-[10%] z-0">
-        {CARS.map((car, idx) => (
+        {mounted && CARS.map((car, idx) => (
           <video
             key={car.id}
             src={car.video}
@@ -64,6 +64,7 @@ export default function Hero() {
             loop
             muted
             playsInline
+            style={{ objectPosition: "75% center" }}
             className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
               idx === activeIdx ? "opacity-70" : "opacity-0"
             }`}
