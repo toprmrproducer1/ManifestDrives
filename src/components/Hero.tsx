@@ -64,7 +64,7 @@ export default function Hero() {
             loop
             muted
             playsInline
-            style={{ objectPosition: "100% center" }}
+            style={{ objectPosition: "65% center" }}
             className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
               idx === activeIdx ? "opacity-70" : "opacity-0"
             }`}
