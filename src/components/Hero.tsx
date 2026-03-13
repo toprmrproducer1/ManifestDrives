@@ -55,11 +55,8 @@ export default function Hero() {
   return (
     <section className="relative h-screen w-full overflow-hidden bg-[#080808] flex flex-col justify-center">
 
-      {/* ── Right-side video panel (right 55%) ── */}
-      <motion.div
-        style={{ y: backgroundY }}
-        className="absolute right-0 top-[-10%] w-[55%] h-[120%] z-0"
-      >
+      {/* Fullscreen background video — client-only to avoid crossOrigin SSR mismatch */}
+      <motion.div style={{ y: backgroundY }} className="absolute inset-0 w-full h-[120%] -top-[10%] z-0">
         {mounted && CARS.map((car, idx) => (
           <video
             key={car.id}
@@ -70,18 +67,14 @@ export default function Hero() {
             playsInline
             style={{ objectPosition: "center center" }}
             className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-              idx === activeIdx ? "opacity-75" : "opacity-0"
+              idx === activeIdx ? "opacity-80" : "opacity-0"
             }`}
           />
         ))}
-        {/* Blend left edge of video into the dark background */}
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,#080808_0%,rgba(8,8,8,0.3)_15%,transparent_40%)] z-10 pointer-events-none" />
-        {/* Subtle top/bottom vignette */}
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,8,8,0.4)_0%,transparent_20%,transparent_80%,rgba(8,8,8,0.5)_100%)] z-10 pointer-events-none" />
       </motion.div>
 
-      {/* Solid dark background on the left so text is always readable */}
-      <div className="absolute left-0 top-0 w-[30%] h-full bg-[#080808] z-0" />
+      {/* Soft left-side gradient so text stays readable — video shows through on the right */}
+      <div className="absolute inset-0 z-[1] pointer-events-none bg-[linear-gradient(90deg,rgba(8,8,8,0.75)_0%,rgba(8,8,8,0.3)_35%,transparent_60%)]" />
 
       {/* Navigation Arrows */}
       <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 z-20 flex justify-between px-4 md:px-8 pointer-events-none">
