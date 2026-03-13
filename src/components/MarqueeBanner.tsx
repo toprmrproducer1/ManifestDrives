@@ -1,0 +1,61 @@
+"use client";
+
+const ITEMS = [
+  "🚀 FREE WORLDWIDE SHIPPING",
+  "✦ 100+ HAPPY CUSTOMERS",
+  "🔄 30-DAY RETURN POLICY",
+  "🏷️ BLACK FRIDAY SALE — UP TO 50% OFF",
+  "🚀 FREE WORLDWIDE SHIPPING",
+  "✦ 100+ HAPPY CUSTOMERS",
+  "🔄 30-DAY RETURN POLICY",
+  "🏷️ BLACK FRIDAY SALE — UP TO 50% OFF",
+  "🚀 FREE WORLDWIDE SHIPPING",
+  "✦ 100+ HAPPY CUSTOMERS",
+  "🔄 30-DAY RETURN POLICY",
+  "🏷️ BLACK FRIDAY SALE — UP TO 50% OFF",
+];
+
+interface MarqueeBannerProps {
+  variant?: "dark" | "red";
+}
+
+export default function MarqueeBanner({ variant = "dark" }: MarqueeBannerProps) {
+  const isDark = variant === "dark";
+
+  return (
+    <div
+      className={`w-full overflow-hidden py-3 ${
+        isDark
+          ? "bg-[#0A0A0A] border-y border-white/[0.06]"
+          : "bg-[#E8000D]"
+      }`}
+    >
+      <div className="flex w-max animate-marquee">
+        {ITEMS.map((item, i) => (
+          <span
+            key={i}
+            className={`inline-flex items-center gap-6 px-10 font-inter text-[12px] tracking-[3px] uppercase whitespace-nowrap ${
+              isDark ? "text-[#9A9A9A]" : "text-white"
+            }`}
+          >
+            {item}
+            <span className={isDark ? "text-[#E8000D]" : "text-white/60"}>•</span>
+          </span>
+        ))}
+      </div>
+
+      <style dangerouslySetInnerHTML={{ __html: `
+        @keyframes marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+          animation: marquee 28s linear infinite;
+        }
+        .animate-marquee:hover {
+          animation-play-state: paused;
+        }
+      ` }} />
+    </div>
+  );
+}

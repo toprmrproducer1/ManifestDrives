@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ShoppingCart, ExternalLink } from "lucide-react";
 
 export default function ShopPage() {
   const [mounted, setMounted] = useState(false);
@@ -12,165 +12,225 @@ export default function ShopPage() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-[#080808] text-white">
-      {/* Page Header */}
-      <div className="pt-[100px] pb-12 px-6 md:px-[6vw] border-b border-white/5">
-        <Link href="/" className="inline-flex items-center gap-2 text-[#9A9A9A] hover:text-white transition-colors mb-8 hover-target">
-          <ArrowLeft size={14} />
-          <span className="font-inter text-[13px] tracking-[2px] uppercase">Back to Manifest Drives</span>
+    <main className="min-h-screen bg-[#0A0A0A] text-white">
+
+      {/* ── Top Header ─────────────────────────────────────────────── */}
+      <div className="sticky top-0 z-50 bg-[#0A0A0A]/95 backdrop-blur-md border-b border-white/[0.07] h-[64px] flex items-center px-6 md:px-[5vw] justify-between">
+        <Link
+          href="/"
+          className="inline-flex items-center gap-2 text-[#9A9A9A] hover:text-white transition-colors hover-target"
+        >
+          <ArrowLeft size={15} />
+          <span className="font-bebas text-[16px] tracking-[3px] uppercase mt-[1px]">Manifest Drives</span>
         </Link>
-        <h1 className="font-bebas text-[56px] md:text-[80px] tracking-[3px] leading-none mb-3">
+        <span className="font-bebas text-[22px] tracking-[6px] text-white">THE COLLECTION</span>
+        <div className="w-[140px]" /> {/* spacer to centre the title */}
+      </div>
+
+      {/* ── Page Title ─────────────────────────────────────────────── */}
+      <div className="px-6 md:px-[5vw] pt-10 pb-8 border-b border-white/[0.06]">
+        <h1 className="font-bebas text-[48px] md:text-[64px] tracking-[3px] leading-none">
           FULL COLLECTION
         </h1>
-        <p className="font-inter text-[#9A9A9A] text-[15px] leading-relaxed max-w-lg">
-          1:32 scale die-cast models — precision engineered. Every car you dream about, scaled to perfection.
+        <p className="font-inter text-[#6A6A6A] text-[14px] mt-2">
+          1:32 scale die-cast models. Precision engineered, museum-grade finish.
         </p>
       </div>
 
-      {/* Product Grid */}
-      <div className="px-6 md:px-[6vw] py-12">
+      {/* ── Product Grid ───────────────────────────────────────────── */}
+      <div className="px-6 md:px-[5vw] py-10">
         {mounted ? (
           <>
+            {/* shopify-list-context is a custom element registered by the Shopify SDK */}
             <shopify-list-context
               type="product"
               query="products"
               first="24"
-              className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10"
             >
+              {/* Product card template — plain raw HTML inside <template> */}
               <template dangerouslySetInnerHTML={{ __html: `
-                <div class="group flex flex-col cursor-pointer">
-                  <!-- Image Area -->
-                  <div class="relative bg-[#0E0E0E] border border-white/[0.06] overflow-hidden aspect-square mb-4 group-hover:border-white/15 transition-colors duration-300">
+                <div style="
+                  display:flex;
+                  flex-direction:column;
+                  background:#111;
+                  border:1px solid rgba(255,255,255,0.06);
+                  transition:border-color .3s;
+                  cursor:pointer;
+                " onmouseenter="this.style.borderColor='rgba(255,255,255,0.18)'" onmouseleave="this.style.borderColor='rgba(255,255,255,0.06)'">
+
+                  <!-- Image -->
+                  <div style="background:#0A0A0A;aspect-ratio:1;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:24px;position:relative;">
                     <shopify-media
-                      width="400"
-                      height="400"
+                      width="360" height="360"
                       query="product.featuredImage"
-                      class="w-full h-full object-contain p-6 transform group-hover:scale-105 transition-transform duration-500 ease-out"
+                      style="width:100%;height:100%;object-fit:contain;transition:transform .5s ease;"
+                      onmouseenter="this.style.transform='scale(1.06)'"
+                      onmouseleave="this.style.transform='scale(1)'"
                     ></shopify-media>
-                    <!-- Hover overlay -->
-                    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(232,0,13,0.06)_0%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none"></div>
-                    <!-- Quick add button on hover -->
-                    <div class="absolute bottom-0 left-0 right-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out bg-gradient-to-t from-[#080808] to-transparent">
-                      <button
-                        onclick="document.getElementById('cart').addLine(event).showModal();"
-                        class="w-full font-bebas text-[14px] tracking-[3px] py-3 text-white bg-[#E8000D] hover:bg-[#FF1A1A] border-none cursor-pointer transition-colors duration-200 uppercase"
-                      >
-                        Add to Cart
-                      </button>
+                    <div style="position:absolute;top:10px;right:10px;background:#E8000D;color:white;font-size:10px;letter-spacing:2px;padding:3px 8px;font-family:sans-serif;text-transform:uppercase;">
+                      1:32
                     </div>
                   </div>
 
-                  <!-- Product Info -->
-                  <div class="flex flex-col flex-1">
-                    <h2 class="font-inter font-medium text-[14px] text-white leading-snug mb-1 uppercase tracking-[0.5px] line-clamp-2">
-                      <shopify-data query="product.title"></shopify-data>
-                    </h2>
-                    <div class="font-inter text-[#9A9A9A] text-[13px] mb-3">
+                  <!-- Info -->
+                  <div style="padding:16px;display:flex;flex-direction:column;flex:1;border-top:1px solid rgba(255,255,255,0.06);">
+                    <div style="font-size:11px;letter-spacing:2px;color:#6A6A6A;text-transform:uppercase;margin-bottom:4px;font-family:sans-serif;">
                       <shopify-data query="product.vendor"></shopify-data>
                     </div>
-                    <div class="flex items-center justify-between mt-auto">
-                      <div class="font-inter font-semibold text-[15px] text-white">
-                        <shopify-money format="money_with_currency" query="product.selectedOrFirstAvailableVariant.price"></shopify-money>
-                      </div>
+                    <div style="font-size:15px;font-weight:600;color:white;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;line-height:1.3;font-family:sans-serif;">
+                      <shopify-data query="product.title"></shopify-data>
+                    </div>
+                    <div style="font-size:17px;font-weight:700;color:white;margin-bottom:14px;font-family:sans-serif;">
+                      <shopify-money format="money_with_currency" query="product.selectedOrFirstAvailableVariant.price"></shopify-money>
+                    </div>
+                    <!-- Action Buttons -->
+                    <div style="display:flex;gap:8px;margin-top:auto;">
+                      <button
+                        onclick="document.getElementById('cart').addLine(event).showModal();"
+                        style="flex:1;background:#E8000D;color:white;border:none;padding:11px 0;font-size:12px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;font-family:sans-serif;transition:background .2s;"
+                        onmouseenter="this.style.background='#FF1A1A'"
+                        onmouseleave="this.style.background='#E8000D'"
+                      >Add to Cart</button>
                       <button
                         onclick="document.getElementById('product-modal').showModal(); document.getElementById('product-modal-context').update(event);"
-                        class="font-inter text-[12px] text-[#9A9A9A] hover:text-white transition-colors underline underline-offset-2 cursor-pointer bg-transparent border-none uppercase tracking-[1px]"
-                      >
-                        Details
-                      </button>
+                        style="flex:1;background:transparent;color:white;border:1px solid rgba(255,255,255,0.2);padding:11px 0;font-size:12px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;font-family:sans-serif;transition:border-color .2s;"
+                        onmouseenter="this.style.borderColor='rgba(255,255,255,0.5)'"
+                        onmouseleave="this.style.borderColor='rgba(255,255,255,0.2)'"
+                      >Details</button>
                     </div>
                   </div>
                 </div>
               ` }} />
+
+              {/* Loading skeleton */}
               <div shopify-loading-placeholder="true" className="col-span-full">
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10">
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
                   {[...Array(8)].map((_, i) => (
-                    <div key={i} className="animate-pulse">
-                      <div className="aspect-square bg-white/5 mb-4" />
-                      <div className="h-4 bg-white/5 mb-2 w-3/4" />
-                      <div className="h-3 bg-white/5 w-1/2" />
+                    <div key={i} className="animate-pulse bg-[#111] border border-white/5">
+                      <div className="aspect-square bg-white/[0.04]" />
+                      <div className="p-4">
+                        <div className="h-3 bg-white/[0.06] w-1/3 mb-3" />
+                        <div className="h-4 bg-white/[0.06] w-3/4 mb-4" />
+                        <div className="h-3 bg-white/[0.06] w-1/4 mb-5" />
+                        <div className="h-10 bg-white/[0.06]" />
+                      </div>
                     </div>
                   ))}
                 </div>
               </div>
             </shopify-list-context>
 
-            {/* Product Detail Modal */}
+            {/* Manually apply CSS grid — shopify-list-context renders its contents
+                into the DOM; we style via a wrapping rule targeting its children */}
+            <style dangerouslySetInnerHTML={{ __html: `
+              shopify-list-context[type="product"] {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+                width: 100%;
+              }
+              @media (min-width: 640px) {
+                shopify-list-context[type="product"] {
+                  grid-template-columns: repeat(3, 1fr);
+                }
+              }
+              @media (min-width: 1024px) {
+                shopify-list-context[type="product"] {
+                  grid-template-columns: repeat(4, 1fr);
+                }
+              }
+            ` }} />
+
             <dialog
               id="product-modal"
-              className="bg-transparent p-0 border-0 m-auto w-[95vw] max-w-4xl max-h-[90vh]"
-              style={{ borderRadius: 0 }}
+              className="bg-transparent p-0 border-0 m-auto w-[95vw] max-w-[860px] max-h-[92vh] overflow-visible"
             >
-              <shopify-context id="product-modal-context" type="product" wait-for-update="true" className="block w-full bg-[#111111] border border-white/10 overflow-y-auto max-h-[90vh]">
+              <shopify-context
+                id="product-modal-context"
+                type="product"
+                wait-for-update="true"
+                className="block w-full bg-[#111111] border border-white/10 overflow-y-auto max-h-[92vh] relative"
+              >
                 <template dangerouslySetInnerHTML={{ __html: `
+                  <!-- Close button -->
                   <button
                     onclick="document.getElementById('product-modal').close();"
-                    class="absolute top-4 right-4 z-50 w-9 h-9 flex items-center justify-center bg-white/5 hover:bg-white/10 border border-white/10 text-white/60 hover:text-white transition-all cursor-pointer"
+                    style="position:absolute;top:14px;right:14px;z-index:60;width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.6);cursor:pointer;font-size:20px;transition:background .2s;"
+                    onmouseenter="this.style.background='rgba(255,255,255,0.12)'"
+                    onmouseleave="this.style.background='rgba(255,255,255,0.05)'"
                   >&times;</button>
 
-                  <div class="flex flex-col md:flex-row min-h-[480px]">
-                    <!-- Left: Images -->
-                    <div class="md:w-[45%] bg-[#0A0A0A] border-r border-white/5 flex flex-col">
-                      <div class="flex-1 flex items-center justify-center p-10">
-                        <shopify-media
-                          id="modal-main-image"
-                          width="480"
-                          height="480"
-                          query="product.selectedOrFirstAvailableVariant.image"
-                          class="w-full object-contain"
-                        ></shopify-media>
-                      </div>
-                      <!-- Thumbnails -->
-                      <div class="p-4 border-t border-white/5">
-                        <shopify-list-context type="image" query="product.images" first="6" class="flex gap-2 overflow-x-auto">
-                          <template>
-                            <button
-                              type="button"
-                              onclick="document.getElementById('modal-main-image').setAttribute('query',''); document.getElementById('modal-main-image').setAttribute('src', this.querySelector('img')?.src || '');"
-                              class="shrink-0 w-14 h-14 border border-white/10 hover:border-[#E8000D] transition-colors cursor-pointer p-1 bg-black"
-                            >
-                              <shopify-media width="56" height="56" query="image" class="w-full h-full object-cover pointer-events-none"></shopify-media>
-                            </button>
-                          </template>
-                        </shopify-list-context>
-                      </div>
-                    </div>
+                  <div style="display:flex;flex-direction:column;min-height:480px;">
 
-                    <!-- Right: Details -->
-                    <div class="md:w-[55%] p-8 md:p-10 flex flex-col">
-                      <div class="mb-1 font-inter text-[11px] tracking-[3px] text-[#9A9A9A] uppercase">
-                        <shopify-data query="product.vendor"></shopify-data>
-                      </div>
-                      <h1 class="font-bebas text-[32px] md:text-[40px] tracking-[2px] text-white leading-tight uppercase mb-3">
-                        <shopify-data query="product.title"></shopify-data>
-                      </h1>
-                      <div class="font-inter font-bold text-[22px] text-white mb-6">
-                        <shopify-money format="money_with_currency" query="product.selectedOrFirstAvailableVariant.price"></shopify-money>
+                    <!-- Mobile: stacked. Desktop: side-by-side -->
+                    <div style="display:flex;flex-wrap:wrap;">
+
+                      <!-- LEFT: Image Panel -->
+                      <div style="flex:1;min-width:280px;background:#0A0A0A;border-right:1px solid rgba(255,255,255,0.06);display:flex;flex-direction:column;">
+                        <div style="flex:1;display:flex;align-items:center;justify-content:center;padding:40px;">
+                          <shopify-media
+                            id="modal-main-image"
+                            width="440" height="440"
+                            query="product.selectedOrFirstAvailableVariant.image"
+                            style="width:100%;object-fit:contain;"
+                          ></shopify-media>
+                        </div>
+                        <!-- Thumbnails -->
+                        <div style="padding:12px 16px;border-top:1px solid rgba(255,255,255,0.05);">
+                          <shopify-list-context type="image" query="product.images" first="6" style="display:flex;gap:8px;overflow-x:auto;">
+                            <template>
+                              <button
+                                type="button"
+                                style="flex-shrink:0;width:52px;height:52px;border:1px solid rgba(255,255,255,0.1);background:#111;cursor:pointer;padding:4px;transition:border-color .2s;"
+                                onmouseenter="this.style.borderColor='#E8000D'"
+                                onmouseleave="this.style.borderColor='rgba(255,255,255,0.1)'"
+                              >
+                                <shopify-media width="44" height="44" query="image" style="width:100%;height:100%;object-fit:cover;pointer-events:none;"></shopify-media>
+                              </button>
+                            </template>
+                          </shopify-list-context>
+                        </div>
                       </div>
 
-                      <div class="mb-6">
-                        <shopify-variant-selector></shopify-variant-selector>
-                      </div>
+                      <!-- RIGHT: Info Panel -->
+                      <div style="flex:1;min-width:280px;padding:40px 36px;display:flex;flex-direction:column;background:#111111;">
+                        <div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#6A6A6A;margin-bottom:6px;font-family:sans-serif;">
+                          <shopify-data query="product.vendor"></shopify-data>
+                        </div>
+                        <div style="font-size:32px;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:white;line-height:1.1;margin-bottom:12px;font-family:sans-serif;">
+                          <shopify-data query="product.title"></shopify-data>
+                        </div>
+                        <div style="font-size:24px;font-weight:700;color:white;margin-bottom:24px;font-family:sans-serif;">
+                          <shopify-money format="money_with_currency" query="product.selectedOrFirstAvailableVariant.price"></shopify-money>
+                        </div>
 
-                      <div class="font-inter text-[14px] text-[#9A9A9A] leading-relaxed mb-8 product-desc">
-                        <shopify-data query="product.descriptionHtml"></shopify-data>
-                      </div>
+                        <!-- Variant selector -->
+                        <div style="margin-bottom:20px;" class="modal-variants">
+                          <shopify-variant-selector></shopify-variant-selector>
+                        </div>
 
-                      <div class="flex flex-col gap-3 mt-auto">
-                        <button
-                          onclick="document.getElementById('cart').addLine(event).showModal();"
-                          shopify-attr--disabled="!product.selectedOrFirstAvailableVariant.availableForSale"
-                          class="w-full font-bebas text-[17px] tracking-[4px] py-4 text-white bg-[#E8000D] hover:bg-[#FF1A1A] border-none cursor-pointer transition-colors duration-200 uppercase disabled:opacity-40 disabled:cursor-not-allowed"
-                        >
-                          Add to Cart
-                        </button>
-                        <button
-                          onclick="document.querySelector('shopify-store').buyNow(event);"
-                          shopify-attr--disabled="!product.selectedOrFirstAvailableVariant.availableForSale"
-                          class="w-full font-bebas text-[17px] tracking-[4px] py-4 text-white bg-transparent border border-white/20 hover:border-white/40 cursor-pointer transition-colors duration-200 uppercase disabled:opacity-40 disabled:cursor-not-allowed"
-                        >
-                          Buy Now
-                        </button>
+                        <!-- Description -->
+                        <div style="font-size:14px;color:#9A9A9A;line-height:1.7;margin-bottom:28px;font-family:sans-serif;" class="modal-desc">
+                          <shopify-data query="product.descriptionHtml"></shopify-data>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div style="display:flex;flex-direction:column;gap:10px;margin-top:auto;">
+                          <button
+                            onclick="document.getElementById('cart').addLine(event).showModal();"
+                            shopify-attr--disabled="!product.selectedOrFirstAvailableVariant.availableForSale"
+                            style="width:100%;background:#E8000D;color:white;border:none;padding:16px;font-size:14px;letter-spacing:4px;text-transform:uppercase;cursor:pointer;font-family:sans-serif;font-weight:700;transition:background .2s;"
+                            onmouseenter="this.style.background='#FF1A1A'"
+                            onmouseleave="this.style.background='#E8000D'"
+                          >Add to Cart</button>
+                          <button
+                            onclick="document.querySelector('shopify-store').buyNow(event);"
+                            shopify-attr--disabled="!product.selectedOrFirstAvailableVariant.availableForSale"
+                            style="width:100%;background:transparent;color:white;border:1px solid rgba(255,255,255,0.25);padding:16px;font-size:14px;letter-spacing:4px;text-transform:uppercase;cursor:pointer;font-family:sans-serif;font-weight:700;transition:all .2s;"
+                            onmouseenter="this.style.borderColor='rgba(255,255,255,0.6)'"
+                            onmouseleave="this.style.borderColor='rgba(255,255,255,0.25)'"
+                          >Buy Now</button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -179,54 +239,47 @@ export default function ShopPage() {
             </dialog>
 
             <style dangerouslySetInnerHTML={{ __html: `
-              dialog#product-modal[open] { display: flex; }
+              dialog#product-modal[open] { display:flex; }
               dialog#product-modal::backdrop {
-                background: rgba(0,0,0,0.85);
-                backdrop-filter: blur(6px);
+                background:rgba(0,0,0,0.88);
+                backdrop-filter:blur(6px);
               }
-              shopify-variant-selector::part(form) {
-                display: flex;
-                flex-direction: column;
-                gap: 12px;
-              }
-              shopify-variant-selector::part(label) {
-                font-family: var(--font-inter, sans-serif);
-                font-size: 12px;
-                text-transform: uppercase;
-                letter-spacing: 2px;
-                color: #9A9A9A;
-                display: block;
-                margin-bottom: 6px;
-              }
-              shopify-variant-selector::part(select) {
-                background: #080808;
-                color: white;
-                border: 1px solid rgba(255,255,255,0.15);
-                padding: 10px 14px;
-                width: 100%;
-                outline: none;
-                font-size: 15px;
-                appearance: none;
-                border-radius: 0;
-              }
-              shopify-variant-selector::part(select):focus {
-                border-color: rgba(232,0,13,0.5);
-              }
-              .product-desc p { margin-bottom: 0.75em; }
-              .product-desc p:last-child { margin-bottom: 0; }
+              .modal-variants shopify-variant-selector::part(form) { display:flex; flex-direction:column; gap:10px; }
+              .modal-variants shopify-variant-selector::part(label) { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#9A9A9A; display:block; margin-bottom:4px; }
+              .modal-variants shopify-variant-selector::part(select) { background:#0A0A0A; color:white; border:1px solid rgba(255,255,255,0.15); padding:10px 14px; width:100%; outline:none; font-size:14px; appearance:none; border-radius:0; }
+              .modal-variants shopify-variant-selector::part(select):focus { border-color:rgba(232,0,13,0.5); }
+              .modal-desc p { margin-bottom:0.75em; }
+              .modal-desc p:last-child { margin-bottom:0; }
             ` }} />
           </>
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10">
+          /* SSR / pre-mount skeleton */
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
             {[...Array(8)].map((_, i) => (
-              <div key={i} className="animate-pulse">
-                <div className="aspect-square bg-white/5 mb-4" />
-                <div className="h-4 bg-white/5 mb-2 w-3/4" />
-                <div className="h-3 bg-white/5 w-1/2" />
+              <div key={i} className="animate-pulse bg-[#111] border border-white/5">
+                <div className="aspect-square bg-white/[0.04]" />
+                <div className="p-4 space-y-3">
+                  <div className="h-3 bg-white/[0.06] w-1/3" />
+                  <div className="h-4 bg-white/[0.06] w-3/4" />
+                  <div className="h-3 bg-white/[0.06] w-1/4" />
+                  <div className="h-10 bg-white/[0.06]" />
+                </div>
               </div>
             ))}
           </div>
         )}
+      </div>
+
+      {/* ── Footer strip ───────────────────────────────────────────── */}
+      <div className="mt-16 border-t border-white/[0.06] py-8 px-6 md:px-[5vw] flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="flex gap-8">
+          {["🚀 Free Worldwide Shipping", "🔄 30-Day Returns", "✦ 100+ Happy Customers"].map((t) => (
+            <span key={t} className="font-inter text-[12px] text-[#6A6A6A] tracking-[1px]">{t}</span>
+          ))}
+        </div>
+        <Link href="/" className="font-bebas text-[13px] tracking-[4px] text-[#E8000D] uppercase hover:text-[#FF1A1A] transition-colors">
+          ← Back to Main Site
+        </Link>
       </div>
     </main>
   );
