@@ -78,14 +78,18 @@ export default function Collection() {
             <div className="absolute top-0 left-0 right-0 h-[1px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 bg-[linear-gradient(90deg,transparent,rgba(232,0,13,0.6)_50%,transparent)]" />
             {/* Video Reveal Top Half */}
             <div className="relative w-full aspect-[4/5] md:aspect-[3/4] bg-black overflow-hidden flex items-center justify-center">
-              <video
-                src={prod.video}
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-full object-cover transform transition-transform duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-105"
-              />
+              {mounted ? (
+                <video
+                  src={prod.video}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover transform transition-transform duration-[800ms] ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-105"
+                />
+              ) : (
+                <div className="w-full h-full bg-[#0A0A0A]" />
+              )}
               <div className="absolute inset-0 bg-gradient-to-t from-[rgba(10,10,10,1)] via-transparent to-transparent opacity-100" />
             </div>
 
