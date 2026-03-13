@@ -13,6 +13,7 @@ const CARS = [
     subline: "Every man who owns the real car started somewhere.",
     price: "4,999",
     video: "/assets/hero/hero-m4.mp4",
+    videoPosition: "center center",
   },
   {
     id: "sto",
@@ -22,6 +23,7 @@ const CARS = [
     subline: "Keep it where you can see it. Every morning.",
     price: "5,499",
     video: "/assets/hero/hero-gt3.mp4",
+    videoPosition: "center center",
   },
   {
     id: "gt3",
@@ -31,6 +33,7 @@ const CARS = [
     subline: "The men who own these cars once held one like this.",
     price: "4,999",
     video: "/assets/hero/hero-sto.mp4",
+    videoPosition: "65% center",
   },
 ];
 
@@ -65,7 +68,7 @@ export default function Hero() {
             loop
             muted
             playsInline
-            style={{ objectPosition: "center center" }}
+            style={{ objectPosition: car.videoPosition }}
             className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
               idx === activeIdx ? "opacity-80" : "opacity-0"
             }`}
