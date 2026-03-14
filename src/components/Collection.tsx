@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 const PRODUCTS = [
   {
     id: "m4",
-    handle: "bmw-m4",
+    handle: "bmw-m4-diecast-model",
     name: "BMW M4 COMPETITION",
     specs: "S58 · 503 HP · 3.9s",
     quote: '"The most wanted desk on the way to the most wanted car."',
@@ -15,7 +15,7 @@ const PRODUCTS = [
   },
   {
     id: "sto",
-    handle: "huracan-sto",
+    handle: "lamborghini-die-cast-model",
     name: "HURACÁN STO",
     specs: "V10 · 640 HP · 3.0s",
     quote: '"Not a toy. A declaration."',
@@ -24,7 +24,7 @@ const PRODUCTS = [
   },
   {
     id: "gt3",
-    handle: "porsche-911-gt3-rs",
+    handle: "porsche-gt3-rs-model",
     name: "PORSCHE 911 GT3 RS",
     specs: "FLAT-SIX · 525 HP · 9,000 RPM",
     quote: '"The obsessive\'s anchor."',
