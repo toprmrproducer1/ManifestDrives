@@ -62,7 +62,7 @@ export default function ShopPage() {
                   </div>
                   <div class="md-card-body">
                     <div class="md-vendor">
-                      <shopify-data query="product.vendor"></shopify-data>
+                      MANIFEST DRIVES
                     </div>
                     <div class="md-title">
                       <shopify-data query="product.title"></shopify-data>
@@ -290,7 +290,7 @@ export default function ShopPage() {
                     <!-- Right: Info Panel -->
                     <div style="flex:1;min-width:260px;padding:40px 36px;display:flex;flex-direction:column;background:#111111;">
                       <div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#6A6A6A;margin-bottom:6px;font-family:sans-serif;">
-                        <shopify-data query="product.vendor"></shopify-data>
+                    MANIFEST DRIVES
                       </div>
                       <div style="font-size:30px;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:white;line-height:1.1;margin-bottom:10px;font-family:sans-serif;">
                         <shopify-data query="product.title"></shopify-data>

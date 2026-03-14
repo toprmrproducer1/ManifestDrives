@@ -77,7 +77,7 @@ export default function Collection() {
             <div className="absolute top-0 left-0 right-0 h-[1px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 bg-[linear-gradient(90deg,transparent,rgba(232,0,13,0.6)_50%,transparent)]" />
 
             {/* Video */}
-            <div className="relative w-full aspect-[4/5] md:aspect-[3/4] bg-black overflow-hidden flex items-center justify-center">
+            <div className="relative w-full h-[260px] bg-black overflow-hidden flex items-center justify-center">
               {mounted ? (
                 <video
                   src={prod.video}
@@ -193,7 +193,7 @@ export default function Collection() {
 
                   <div style="flex:1;min-width:260px;padding:40px 32px;display:flex;flex-direction:column;background:#111111;">
                     <div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#6A6A6A;margin-bottom:6px;font-family:sans-serif;">
-                      <shopify-data query="product.vendor"></shopify-data>
+                      MANIFEST DRIVES
                     </div>
                     <div style="font-size:30px;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:white;line-height:1.1;margin-bottom:10px;font-family:sans-serif;">
                       <shopify-data query="product.title"></shopify-data>
