@@ -126,7 +126,7 @@ export default function Collection() {
                           style="flex:1;background:transparent;color:white;border:1px solid rgba(255,255,255,0.22);padding:13px 0;font-family:sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:700;cursor:pointer;transition:border-color .2s;"
                           onmouseenter="this.style.borderColor='rgba(255,255,255,0.55)'"
                           onmouseleave="this.style.borderColor='rgba(255,255,255,0.22)'"
-                        >View More</button>
+                        >Shop Now</button>
                       </div>
                       <div style="text-align:center;font-family:sans-serif;font-size:14px;font-weight:700;color:#C9A84C;">
                         ₹${prod.price}
@@ -140,7 +140,7 @@ export default function Collection() {
                         Add to Cart
                       </button>
                       <button className="flex-1 bg-transparent text-white border border-white/20 py-3 font-inter text-[11px] tracking-[3px] uppercase font-bold cursor-pointer">
-                        View More
+                        Shop Now
                       </button>
                     </div>
                     <div className="text-center font-inter text-[14px] font-bold text-[#C9A84C]">₹{prod.price}</div>
@@ -151,6 +151,23 @@ export default function Collection() {
           </motion.div>
         ))}
       </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.5 }}
+        className="mt-16"
+      >
+        <a 
+          href="/shop" 
+          className="group relative inline-flex items-center justify-center px-10 py-4 bg-transparent border border-[#E8000D] overflow-hidden transition-all duration-300 hover:bg-[#E8000D]"
+        >
+          <span className="relative z-10 font-bebas text-[20px] tracking-[4px] text-white uppercase group-hover:text-white">
+            Shop Full Catalog
+          </span>
+        </a>
+      </motion.div>
 
       {/* ── Product Detail Modal ──────────────────────────────── */}
       {mounted && (
