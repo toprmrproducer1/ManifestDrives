@@ -3,7 +3,8 @@ import Hero from "@/components/Hero";
 import MarqueeBanner from "@/components/MarqueeBanner";
 import Truth from "@/components/Truth";
 import Collection from "@/components/Collection";
-import MarqueeBannerRed from "@/components/MarqueeBanner";
+import SwipeReveal from "@/components/SwipeReveal";
+import Manifesto from "@/components/Manifesto";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
 import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA";
@@ -18,10 +19,14 @@ export default function Home() {
         <MarqueeBanner variant="dark" />
       </div>
       <Hero />
+      {/* Swipe comparison: model on desk → real car in driveway */}
+      <SwipeReveal />
+      {/* Manifesto text section */}
+      <Manifesto />
       <Truth />
       <Collection />
       {/* Red marquee banner mid-page */}
-      <MarqueeBannerRed variant="red" />
+      <MarqueeBanner variant="red" />
       {/* Testimonial carousel */}
       <TestimonialCarousel />
       <FAQ />
