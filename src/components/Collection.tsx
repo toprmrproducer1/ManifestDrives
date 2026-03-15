@@ -111,14 +111,9 @@ export default function Collection() {
 
               {/* ── Action Buttons ── */}
               <div className="mt-auto relative pt-6 border-t border-[rgba(255,255,255,0.04)]">
-                {/* Price displayed above button, clearly inside card */}
-                <div className="text-center font-inter text-[16px] font-bold text-[#C9A84C] mb-4">${prod.price}</div>
                 {mounted ? (
                   <shopify-context type="product" handle={prod.handle}>
                     <template dangerouslySetInnerHTML={{ __html: `
-                      <div style="text-align:center;font-family:sans-serif;font-size:16px;font-weight:700;color:#C9A84C;margin-bottom:12px;">
-                        $${prod.price}
-                      </div>
                       <button
                         onclick="document.getElementById('cart').addLine(event).showModal();"
                         style="width:100%;background:#E8000D;color:white;border:none;padding:15px 0;font-family:sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:700;cursor:pointer;transition:background .2s;"
@@ -128,11 +123,9 @@ export default function Collection() {
                     ` }} />
                   </shopify-context>
                 ) : (
-                  <>
-                    <button className="w-full bg-[#E8000D] text-white border-none py-3 font-inter text-[11px] tracking-[3px] uppercase font-bold cursor-pointer">
-                      Add to Cart
-                    </button>
-                  </>
+                  <button className="w-full bg-[#E8000D] text-white border-none py-3 font-inter text-[11px] tracking-[3px] uppercase font-bold cursor-pointer">
+                    Add to Cart
+                  </button>
                 )}
               </div>
             </div>

@@ -24,9 +24,9 @@ export default function Home() {
       <Truth />
       <Collection />
       <MarqueeBanner variant="red" />
+      <UrgencySection />
       <TestimonialCarousel />
       <FAQ />
-      <UrgencySection />
       <CTA />
       <ManifestBanner />
       <Footer />
