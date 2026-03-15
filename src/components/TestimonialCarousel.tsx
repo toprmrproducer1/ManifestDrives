@@ -6,75 +6,51 @@ import Image from "next/image";
 const TESTIMONIALS = [
   {
     stars: 5,
-    quote: "Had the car arrive today and the quality was exceptional!!! Would definitely buy again.",
-    name: "Asher Cyril",
-    location: "Mumbai, India",
-    img: "/testimonial-gt3.jpg",
+    quote: "Had this delivered to my apartment in Manhattan and the packaging alone felt like a luxury unboxing. The GT3 RS sits on my desk like it owns the room.",
+    name: "James Harrington",
+    location: "New York, NY",
+    img: "/us-t1.jpg",
     model: "Porsche 911 GT3 RS",
   },
   {
     stars: 5,
-    quote: "Absolutely stunning detail. This isn't a toy — it's a display piece. The Huracán STO looks flawless on my desk.",
-    name: "Rishi Mehra",
-    location: "Delhi, India",
-    img: "/testimonial-sto.jpg",
+    quote: "The M4 detail is insane. I work from home in Santa Monica and every Zoom call someone asks about the blue car on my desk. Best conversation starter I own.",
+    name: "Tyler Brooks",
+    location: "Los Angeles, CA",
+    img: "/us-t2.jpg",
+    model: "BMW M4 Competition",
+  },
+  {
+    stars: 5,
+    quote: "Bought the STO to sit next to my keyboard. The finish, the weight, the stance — this is not a toy. This is a statement. Shipped to Austin in 5 days.",
+    name: "Ryan Castellano",
+    location: "Austin, TX",
+    img: "/us-t3.jpg",
     model: "Huracán STO",
   },
   {
     stars: 5,
-    quote: "Fast shipping, excellent packaging, and the model exceeded every expectation. Manifest Drives is the real deal.",
-    name: "Siddharth Kapoor",
-    location: "Bangalore, India",
-    img: "/testimonial-gt3-2.jpg",
+    quote: "I run a trading desk in Midtown and this GT3 RS sits right next to my Bloomberg terminal. My clients love it. Manifest Drives is elite.",
+    name: "Marcus Webb",
+    location: "New York, NY",
+    img: "/us-t4.jpg",
     model: "Porsche 911 GT3 RS",
   },
   {
     stars: 5,
-    quote: "First time buying a die-cast model and I'm blown away. The packaging alone felt like unboxing a luxury item.",
-    name: "Aditya Sharma",
-    location: "Pune, India",
-    img: "/testimonial-m4.jpg",
-    model: "BMW M4 Competition",
-  },
-  {
-    stars: 5,
-    quote: "My M4 sits on my office desk and every client who walks in asks about it. It's a conversation starter every time.",
-    name: "Karan Malhotra",
-    location: "Hyderabad, India",
-    img: "/testimonial-bmw2.jpg",
-    model: "BMW M4 Competition",
-  },
-  {
-    stars: 5,
-    quote: "Shipped to Chennai in 4 days. Perfect condition, incredible finish. This is what premium actually looks like.",
-    name: "Vikram Nair",
-    location: "Chennai, India",
-    img: "/testimonial-lamborghini2.jpg",
-    model: "Huracán STO",
-  },
-  {
-    stars: 5,
-    quote: "Bought the GT3 RS as a birthday gift for my brother. He was stunned. The detail on the wing and wheels is insane.",
-    name: "Rohan Verma",
-    location: "Ahmedabad, India",
-    img: "/testimonial-lamborghini3.jpg",
+    quote: "Unwrapped this on a Friday evening with a glass of Scotch. The Huracán in yellow is exactly what I imagined. These guys understand luxury.",
+    name: "Daniel Reeves",
+    location: "Miami, FL",
+    img: "/us-t5.jpg",
     model: "Lamborghini Huracán",
   },
   {
     stars: 5,
-    quote: "I own a real Porsche and this model is more accurate than I expected. 1:32 and it's still perfect in every way.",
-    name: "Arjun Pillai",
-    location: "Kochi, India",
-    img: "/testimonial-gt3.jpg",
-    model: "Porsche 911 GT3 RS",
-  },
-  {
-    stars: 5,
-    quote: "Got the STO for my study desk — it's the daily reminder I need. Manifest Drives gets what they're selling.",
-    name: "Dev Choudhary",
-    location: "Jaipur, India",
-    img: "/testimonial-sto.jpg",
-    model: "Huracán STO",
+    quote: "Shot a whole editorial around the M4 in my studio. The detail at 1:32 holds up under a macro lens — that's how good the finish is. Ordered two more.",
+    name: "Chris LaFont",
+    location: "Chicago, IL",
+    img: "/us-t6.jpg",
+    model: "BMW M4 Competition",
   },
 ];
 
@@ -112,7 +88,7 @@ export default function TestimonialCarousel() {
         <span className="font-inter text-[13px] text-[#555] self-center">4.9 · 200+ verified reviews</span>
       </div>
 
-      {/* Grid */}
+      {/* 3-column grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
         {TESTIMONIALS.map((t, i) => (
           <motion.div
