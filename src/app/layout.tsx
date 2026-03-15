@@ -12,6 +12,14 @@ const bebas = Bebas_Neue({ subsets: ["latin"], weight: "400", variable: "--font-
 export const metadata: Metadata = {
   title: "Manifest Drives — Own It In Your Hand First",
   description: "Premium 1:32 die-cast scale models of the world's most iconic cars. BMW M4. Lamborghini Huracán STO. Porsche 911 GT3 RS. It starts on your desk. It ends in your driveway.",
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico" },
+    ],
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
   openGraph: {
     title: "Manifest Drives",
     description: "The desk first. The driveway next.",
