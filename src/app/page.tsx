@@ -6,6 +6,7 @@ import Truth from "@/components/Truth";
 import Collection from "@/components/Collection";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
 import FAQ from "@/components/FAQ";
+import UrgencySection from "@/components/UrgencySection";
 import CTA from "@/components/CTA";
 import ManifestBanner from "@/components/ManifestBanner";
 import Footer from "@/components/Footer";
@@ -25,6 +26,7 @@ export default function Home() {
       <MarqueeBanner variant="red" />
       <TestimonialCarousel />
       <FAQ />
+      <UrgencySection />
       <CTA />
       <ManifestBanner />
       <Footer />
