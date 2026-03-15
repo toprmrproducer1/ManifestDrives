@@ -7,6 +7,7 @@ import Collection from "@/components/Collection";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
 import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA";
+import ManifestBanner from "@/components/ManifestBanner";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -25,6 +26,7 @@ export default function Home() {
       <TestimonialCarousel />
       <FAQ />
       <CTA />
+      <ManifestBanner />
       <Footer />
     </main>
   );
