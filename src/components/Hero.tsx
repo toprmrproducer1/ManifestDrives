@@ -11,7 +11,7 @@ const CARS = [
     tab: "BMW M4",
     headline: "THE FIRST STEP.",
     subline: "Every man who owns the real car started somewhere.",
-    price: "4,999",
+    price: "49.99",
     video: "/assets/hero/hero-m4.mp4",
     videoPosition: "center center",
   },
@@ -21,7 +21,7 @@ const CARS = [
     tab: "HURACÁN STO",
     headline: "THE DREAM IS REAL.",
     subline: "Keep it where you can see it. Every morning.",
-    price: "5,499",
+    price: "49.99",
     video: "/assets/hero/hero-gt3.mp4",
     videoPosition: "center center",
   },
@@ -31,7 +31,7 @@ const CARS = [
     tab: "PORSCHE GT3 RS",
     headline: "BUILT FOR THOSE WHO KNOW.",
     subline: "The men who own these cars once held one like this.",
-    price: "4,999",
+    price: "49.99",
     video: "/assets/hero/hero-sto.mp4",
     videoPosition: "65% center",
   },
@@ -120,13 +120,13 @@ export default function Hero() {
               <shopify-context type="product" handle={activeCar.handle}>
                 <template dangerouslySetInnerHTML={{ __html: `
                   <button onclick="document.getElementById('cart').addLine(event).showModal();" class="inline-block font-bebas text-[16px] tracking-[4px] px-10 py-4 uppercase border-none transition-all duration-400 hover-target btn-premium text-white bg-[#E8000D] shadow-[0_0_0_1px_rgba(232,0,13,0.3),_0_4px_24px_rgba(232,0,13,0.4),_inset_0_1px_0_rgba(255,255,255,0.1)] hover:bg-[#FF1A1A] hover:shadow-[0_0_0_1px_rgba(232,0,13,0.5),_0_8px_40px_rgba(232,0,13,0.6),_inset_0_1px_0_rgba(255,255,255,0.15)] hover:-translate-y-[1px]">
-                    CLAIM YOURS — ₹${activeCar.price}
+                    CLAIM YOURS — $${activeCar.price}
                   </button>
                 ` }} />
               </shopify-context>
             ) : (
               <button className="inline-block font-bebas text-[16px] tracking-[4px] px-10 py-4 uppercase border-none transition-all duration-400 hover-target btn-premium text-white bg-[#E8000D] shadow-[0_0_0_1px_rgba(232,0,13,0.3),_0_4px_24px_rgba(232,0,13,0.4),_inset_0_1px_0_rgba(255,255,255,0.1)] hover:bg-[#FF1A1A] hover:shadow-[0_0_0_1px_rgba(232,0,13,0.5),_0_8px_40px_rgba(232,0,13,0.6),_inset_0_1px_0_rgba(255,255,255,0.15)] hover:-translate-y-[1px]">
-                CLAIM YOURS — ₹{activeCar.price}
+                CLAIM YOURS — ${activeCar.price}
               </button>
             )}
           </motion.div>

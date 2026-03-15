@@ -6,29 +6,29 @@ import { Plus } from "lucide-react";
 
 const FAQ_ITEMS = [
   {
+    question: "HOW LONG DOES SHIPPING TAKE?",
+    answer: "All orders are dispatched within 1–2 business days. Delivered in 6–12 business days worldwide. You'll receive a tracking number via email as soon as your order ships."
+  },
+  {
     question: "WHICH SCALE ARE THE MODEL CARS?",
-    answer: "All our manifest models are precisely engineered at 1:32 scale, striking the perfect balance between desk-sized display and intricate engine/interior detail."
+    answer: "All models are 1:32 scale — the perfect desk size. Large enough to show every detail. Small enough to sit on any surface without taking over the space."
   },
   {
     question: "ARE THE DOORS AND HOOD FUNCTIONAL?",
-    answer: "Yes. Every model in the Manifest collection features functional opening doors, hoods, and in most cases, steerable front wheels and working suspension."
-  },
-  {
-    question: "HOW LONG DOES SHIPPING TAKE?",
-    answer: "We ship globally from our logistics hubs. Standard shipping takes 7-12 business days, while Express Manifest shipping arrives in 3-5 days."
+    answer: "Yes. Doors, hoods, and bonnets open and close on all three models. Built for display, designed to interact with."
   },
   {
     question: "DO THEY COME WITH A DISPLAY BASE?",
-    answer: "Every Manifest Drive model includes a premium acrylic display base with a brushed metal nameplate identifying the specific car and its production number."
-  },
-  {
-    question: "DO THEY SHIP TO ALL INDIAN CITIES?",
-    answer: "Yes. We ship to every pin code across India — metros, Tier-2, and Tier-3 cities included. Standard delivery is 5–8 business days across India. For metro cities (Mumbai, Delhi, Bangalore, Hyderabad, Chennai, Pune), most orders arrive in 3–4 days."
+    answer: "Every model ships with a branded display base included — no separate purchase needed."
   },
   {
     question: "CAN I GIFT THIS?",
-    answer: "Absolutely — and it makes an exceptional gift. Every Manifest Drive arrives in premium matte black gift packaging with a magnetic close lid. You can add a personalised note at checkout. If you're buying for a car enthusiast, they will remember this gift."
-  }
+    answer: "Yes. Premium packaging on every order. Gift-ready straight out of the box. No extra wrapping needed."
+  },
+  {
+    question: "DO YOU SHIP INTERNATIONALLY?",
+    answer: "Yes — worldwide. Free shipping on every order, no minimum spend required."
+  },
 ];
 
 export default function FAQ() {

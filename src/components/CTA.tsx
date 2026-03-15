@@ -61,7 +61,7 @@ export default function CTA() {
       </motion.div>
       
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 font-inter text-[12px] tracking-[2px] text-[#2A2A2A] uppercase w-full text-center z-10">
-        FREE SHIPPING INDIA · SHIPS IN 3 DAYS · RETURNS ACCEPTED
+        FREE WORLDWIDE SHIPPING · SHIPS IN 1–2 DAYS · 30-DAY SATISFACTION GUARANTEE
       </div>
     </section>
   );

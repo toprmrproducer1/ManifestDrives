@@ -10,7 +10,7 @@ const PRODUCTS = [
     name: "BMW M4 COMPETITION",
     specs: "S58 · 503 HP · 3.9s",
     quote: '"The most wanted desk on the way to the most wanted car."',
-    price: "4,999",
+    price: "49.99",
     video: "/assets/product/product-m4.mp4",
   },
   {
@@ -19,7 +19,7 @@ const PRODUCTS = [
     name: "HURACÁN STO",
     specs: "V10 · 640 HP · 3.0s",
     quote: '"Not a toy. A declaration."',
-    price: "5,499",
+    price: "49.99",
     video: "/assets/product/product-sto.mp4",
   },
   {
@@ -28,7 +28,7 @@ const PRODUCTS = [
     name: "PORSCHE 911 GT3 RS",
     specs: "FLAT-SIX · 525 HP · 9,000 RPM",
     quote: '"The obsessive\'s anchor."',
-    price: "4,999",
+    price: "49.99",
     video: "/assets/product/product-gt3.mp4",
   },
 ];
@@ -112,12 +112,12 @@ export default function Collection() {
               {/* ── Action Buttons ── */}
               <div className="mt-auto relative pt-6 border-t border-[rgba(255,255,255,0.04)]">
                 {/* Price displayed above button, clearly inside card */}
-                <div className="text-center font-inter text-[16px] font-bold text-[#C9A84C] mb-4">₹{prod.price}</div>
+                <div className="text-center font-inter text-[16px] font-bold text-[#C9A84C] mb-4">${prod.price}</div>
                 {mounted ? (
                   <shopify-context type="product" handle={prod.handle}>
                     <template dangerouslySetInnerHTML={{ __html: `
                       <div style="text-align:center;font-family:sans-serif;font-size:16px;font-weight:700;color:#C9A84C;margin-bottom:12px;">
-                        ₹${prod.price}
+                        $${prod.price}
                       </div>
                       <button
                         onclick="document.getElementById('cart').addLine(event).showModal();"

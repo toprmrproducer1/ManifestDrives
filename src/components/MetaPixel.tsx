@@ -2,21 +2,24 @@
 
 import { usePathname, useSearchParams } from "next/navigation";
 import Script from "next/script";
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 import * as metaPixel from "@/utils/metaPixel";
 
-export const MetaPixel = () => {
+// Inner component uses useSearchParams — must be wrapped in Suspense
+function MetaPixelTracker() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    // This pageview only triggers on route changes, not the initial load of the script itself,
-    // but the script includes a default fbq('track', 'PageView') for the initial load.
     if (pathname) {
       metaPixel.pageview();
     }
   }, [pathname, searchParams]);
 
+  return null;
+}
+
+export const MetaPixel = () => {
   if (!metaPixel.FB_PIXEL_ID) return null;
 
   return (
@@ -39,8 +42,8 @@ export const MetaPixel = () => {
           `,
         }}
       />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <noscript>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           height="1"
           width="1"
@@ -49,6 +52,10 @@ export const MetaPixel = () => {
           alt=""
         />
       </noscript>
+      {/* Suspense required for useSearchParams in Next.js 16 */}
+      <Suspense fallback={null}>
+        <MetaPixelTracker />
+      </Suspense>
     </>
   );
 };
