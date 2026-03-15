@@ -20,6 +20,14 @@ const FAQ_ITEMS = [
   {
     question: "DO THEY COME WITH A DISPLAY BASE?",
     answer: "Every Manifest Drive model includes a premium acrylic display base with a brushed metal nameplate identifying the specific car and its production number."
+  },
+  {
+    question: "DO THEY SHIP TO ALL INDIAN CITIES?",
+    answer: "Yes. We ship to every pin code across India — metros, Tier-2, and Tier-3 cities included. Standard delivery is 5–8 business days across India. For metro cities (Mumbai, Delhi, Bangalore, Hyderabad, Chennai, Pune), most orders arrive in 3–4 days."
+  },
+  {
+    question: "CAN I GIFT THIS?",
+    answer: "Absolutely — and it makes an exceptional gift. Every Manifest Drive arrives in premium matte black gift packaging with a magnetic close lid. You can add a personalised note at checkout. If you're buying for a car enthusiast, they will remember this gift."
   }
 ];
 

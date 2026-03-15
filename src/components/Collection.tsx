@@ -20,7 +20,7 @@ const PRODUCTS = [
     specs: "V10 · 640 HP · 3.0s",
     quote: '"Not a toy. A declaration."',
     price: "5,499",
-    video: "/assets/product/product-gt3.mp4",
+    video: "/assets/product/product-sto.mp4",
   },
   {
     id: "gt3",
@@ -29,7 +29,7 @@ const PRODUCTS = [
     specs: "FLAT-SIX · 525 HP · 9,000 RPM",
     quote: '"The obsessive\'s anchor."',
     price: "4,999",
-    video: "/assets/product/product-sto.mp4",
+    video: "/assets/product/product-gt3.mp4",
   },
 ];
 
@@ -111,39 +111,27 @@ export default function Collection() {
 
               {/* ── Action Buttons ── */}
               <div className="mt-auto relative pt-6 border-t border-[rgba(255,255,255,0.04)]">
+                {/* Price displayed above button, clearly inside card */}
+                <div className="text-center font-inter text-[16px] font-bold text-[#C9A84C] mb-4">₹{prod.price}</div>
                 {mounted ? (
                   <shopify-context type="product" handle={prod.handle}>
                     <template dangerouslySetInnerHTML={{ __html: `
-                      <div style="display:flex;gap:8px;margin-bottom:8px;">
-                        <button
-                          onclick="document.getElementById('cart').addLine(event).showModal();"
-                          style="flex:1;background:#E8000D;color:white;border:none;padding:13px 0;font-family:sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:700;cursor:pointer;transition:background .2s;"
-                          onmouseenter="this.style.background='#FF1A1A'"
-                          onmouseleave="this.style.background='#E8000D'"
-                        >Add to Cart</button>
-                        <button
-                          onclick="document.getElementById('col-modal').showModal();document.getElementById('col-modal-ctx').update(event);"
-                          style="flex:1;background:transparent;color:white;border:1px solid rgba(255,255,255,0.22);padding:13px 0;font-family:sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:700;cursor:pointer;transition:border-color .2s;"
-                          onmouseenter="this.style.borderColor='rgba(255,255,255,0.55)'"
-                          onmouseleave="this.style.borderColor='rgba(255,255,255,0.22)'"
-                        >Shop Now</button>
-                      </div>
-                      <div style="text-align:center;font-family:sans-serif;font-size:14px;font-weight:700;color:#C9A84C;">
+                      <div style="text-align:center;font-family:sans-serif;font-size:16px;font-weight:700;color:#C9A84C;margin-bottom:12px;">
                         ₹${prod.price}
                       </div>
+                      <button
+                        onclick="document.getElementById('cart').addLine(event).showModal();"
+                        style="width:100%;background:#E8000D;color:white;border:none;padding:15px 0;font-family:sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:700;cursor:pointer;transition:background .2s;"
+                        onmouseenter="this.style.background='#FF1A1A'"
+                        onmouseleave="this.style.background='#E8000D'"
+                      >Add to Cart</button>
                     ` }} />
                   </shopify-context>
                 ) : (
                   <>
-                    <div className="flex gap-2 mb-2">
-                      <button className="flex-1 bg-[#E8000D] text-white border-none py-3 font-inter text-[11px] tracking-[3px] uppercase font-bold cursor-pointer">
-                        Add to Cart
-                      </button>
-                      <button className="flex-1 bg-transparent text-white border border-white/20 py-3 font-inter text-[11px] tracking-[3px] uppercase font-bold cursor-pointer">
-                        Shop Now
-                      </button>
-                    </div>
-                    <div className="text-center font-inter text-[14px] font-bold text-[#C9A84C]">₹{prod.price}</div>
+                    <button className="w-full bg-[#E8000D] text-white border-none py-3 font-inter text-[11px] tracking-[3px] uppercase font-bold cursor-pointer">
+                      Add to Cart
+                    </button>
                   </>
                 )}
               </div>
