@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState, useCallback, useEffect } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 const EASE = [0.25, 0.46, 0.45, 0.94] as const;
@@ -132,11 +133,13 @@ export default function SwipeManifesto() {
           >
             {/* DESK LAYER (bottom/left) */}
             <div className="absolute inset-0 z-[1]">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src="/assets/swipe/car-desk.png"
                 alt="Model car on desk"
-                className="w-full h-full object-cover pointer-events-none"
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 540px"
+                className="object-cover pointer-events-none"
                 style={{ objectPosition: "center 65%" }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[rgba(8,8,8,0.55)] to-transparent pointer-events-none" />
@@ -151,11 +154,13 @@ export default function SwipeManifesto() {
               className="absolute inset-0 z-[2]"
               style={{ clipPath: `inset(0 ${100 - pct}% 0 0)` }}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src="/assets/swipe/car-driveway.png"
                 alt="Real car in driveway"
-                className="w-full h-full object-cover pointer-events-none"
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 540px"
+                className="object-cover pointer-events-none"
                 style={{ objectPosition: "center center" }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[rgba(8,8,8,0.55)] to-transparent pointer-events-none" />

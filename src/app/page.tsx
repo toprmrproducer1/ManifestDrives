@@ -1,15 +1,18 @@
+import dynamic from "next/dynamic";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import MarqueeBanner from "@/components/MarqueeBanner";
 import SwipeManifesto from "@/components/SwipeManifesto";
-import Truth from "@/components/Truth";
-import Collection from "@/components/Collection";
-import TestimonialCarousel from "@/components/TestimonialCarousel";
-import FAQ from "@/components/FAQ";
-import UrgencySection from "@/components/UrgencySection";
-import CTA from "@/components/CTA";
-import ManifestBanner from "@/components/ManifestBanner";
-import Footer from "@/components/Footer";
+
+// Aggressive code-splitting for below-the-fold components
+const Truth = dynamic(() => import("@/components/Truth"));
+const Collection = dynamic(() => import("@/components/Collection"));
+const TestimonialCarousel = dynamic(() => import("@/components/TestimonialCarousel"));
+const FAQ = dynamic(() => import("@/components/FAQ"));
+const UrgencySection = dynamic(() => import("@/components/UrgencySection"));
+const CTA = dynamic(() => import("@/components/CTA"));
+const ManifestBanner = dynamic(() => import("@/components/ManifestBanner"));
+const Footer = dynamic(() => import("@/components/Footer"));
 
 export default function Home() {
   return (
