@@ -76,8 +76,8 @@ export default function Hero() {
         ))}
       </motion.div>
 
-      {/* Soft left-side gradient so text stays readable — video shows through on the right */}
-      <div className="absolute inset-0 z-[1] pointer-events-none bg-[linear-gradient(90deg,rgba(8,8,8,0.75)_0%,rgba(8,8,8,0.3)_35%,transparent_60%)]" />
+      {/* Soft left-side gradient so text stays readable, significantly lighter now so video shows through */}
+      <div className="absolute inset-0 z-[1] pointer-events-none bg-[linear-gradient(90deg,rgba(8,8,8,0.55)_0%,rgba(8,8,8,0.15)_35%,transparent_50%)]" />
 
       {/* Navigation Arrows */}
       <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 z-20 flex justify-between px-4 md:px-8 pointer-events-none">
